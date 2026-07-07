@@ -1,0 +1,68 @@
+{
+  "features": [
+    "FG_PCT",
+    "FG3_PCT",
+    "FT_PCT",
+    "REB",
+    "AST",
+    "TOV",
+    "STL",
+    "BLK",
+    "PF"
+  ],
+  "coefficients": {
+    "FG_PCT": 13.472,
+    "FG3_PCT": 4.9837,
+    "FT_PCT": 3.3634,
+    "REB": 13.8484,
+    "AST": -2.1276,
+    "TOV": -4.7796,
+    "STL": 5.492,
+    "BLK": 2.4006,
+    "PF": -2.7671
+  },
+  "intercept": -15.2666,
+  "feature_ranges": {
+    "FG_PCT": {
+      "min": 0.246,
+      "max": 0.687
+    },
+    "FG3_PCT": {
+      "min": 0.0,
+      "max": 0.842
+    },
+    "FT_PCT": {
+      "min": 0.0,
+      "max": 1.0
+    },
+    "REB": {
+      "min": 17.0,
+      "max": 81.0
+    },
+    "AST": {
+      "min": 4.0,
+      "max": 50.0
+    },
+    "TOV": {
+      "min": 1.0,
+      "max": 31.0
+    },
+    "STL": {
+      "min": 0.0,
+      "max": 22.0
+    },
+    "BLK": {
+      "min": 0.0,
+      "max": 20.0
+    },
+    "PF": {
+      "min": 4.0,
+      "max": 42.0
+    }
+  },
+  "metrics": {
+    "accuracy": 0.8034,
+    "auc": 0.8917,
+    "n_samples": 33316
+  }
+}
