@@ -1,3 +1,4 @@
+![exemple](doc/exemple.png)
 # Court Vision - NBA Analytics Dashboard
 
 Projet réalisé pour l'**AQX Sports Analytics Data Bowl 2.0**.
