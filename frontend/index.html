@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Court Vision — NBA Analytics Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="court-lines" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">2010 &mdash; 2024 &middot; SAISON RÉGULIÈRE &middot; DONNÉES ÉQUIPES NBA</div>
+    <h1 class="scoreboard-title">COURT<span>VISION</span></h1>
+    <p class="hero-sub">Tableau de bord d'analyse sportive basketball. Explorez 14 saisons de statistiques, comparez des équipes et estimez une probabilité de victoire à partir d'un modèle entraîné sur plus de 33&nbsp;000 matchs.</p>
+    <div class="hero-stats" id="heroStats">
+      <div class="hero-stat"><span class="hero-stat-value" id="statGames">—</span><span class="hero-stat-label">matchs analysés</span></div>
+      <div class="hero-stat"><span class="hero-stat-value" id="statTeams">—</span><span class="hero-stat-label">équipes</span></div>
+      <div class="hero-stat"><span class="hero-stat-value" id="statAcc">—</span><span class="hero-stat-label">précision du modèle</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="panel" id="trendsPanel">
+    <div class="panel-head">
+      <h2><span class="tag">01</span>Évolution du jeu</h2>
+      <p class="panel-desc">Moyennes par saison &mdash; points, tirs à 3&nbsp;points, passes et rebonds. Sélectionnez une équipe pour voir son évolution propre.</p>
+    </div>
+    <div class="controls">
+      <label for="trendsTeamSelect">Équipe</label>
+      <select id="trendsTeamSelect">
+        <option value="">Toutes les équipes (moyenne ligue)</option>
+      </select>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="trendsChart"></canvas>
+    </div>
+  </section>
+
+  <section class="panel" id="standingsPanel">
+    <div class="panel-head">
+      <h2><span class="tag">02</span>Classement</h2>
+      <p class="panel-desc">Sélectionnez une saison pour voir le classement des équipes par pourcentage de victoires.</p>
+    </div>
+    <div class="controls">
+      <label for="seasonSelect">Saison</label>
+      <select id="seasonSelect"></select>
+      <label for="teamFilter">Équipe</label>
+      <select id="teamFilter">
+        <option value="">Toutes les équipes</option>
+      </select>
+    </div>
+    <div class="table-wrap">
+      <table id="standingsTable">
+        <thead>
+          <tr>
+            <th>#</th><th>Équipe</th><th>V</th><th>D</th><th>%V</th>
+            <th>PTS</th><th>REB</th><th>AST</th><th>FG%</th><th>3P%</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel" id="comparePanel">
+    <div class="panel-head">
+      <h2><span class="tag">03</span>Comparateur d'équipes</h2>
+      <p class="panel-desc">Confrontez deux équipes sur la même saison à travers 6 indicateurs clés.</p>
+    </div>
+    <div class="controls compare-controls">
+      <div>
+        <label for="teamA">Équipe A</label>
+        <select id="teamA"></select>
+      </div>
+      <div class="vs">VS</div>
+      <div>
+        <label for="teamB">Équipe B</label>
+        <select id="teamB"></select>
+      </div>
+    </div>
+    <div class="chart-wrap radar-wrap">
+      <canvas id="radarChart"></canvas>
+    </div>
+  </section>
+
+  <section class="panel" id="predictorPanel">
+    <div class="panel-head">
+      <h2><span class="tag">04</span>Simulateur de victoire</h2>
+      <p class="panel-desc">Modèle de régression logistique entraîné sur les box-scores. Ajustez les curseurs pour simuler la performance d'une équipe et voir la probabilité de victoire estimée.</p>
+    </div>
+    <div class="predictor">
+      <div class="predictor-sliders" id="sliders"></div>
+      <div class="predictor-result">
+        <div class="gauge-label">Probabilité de victoire</div>
+        <div class="gauge">
+          <div class="gauge-fill" id="gaugeFill"></div>
+        </div>
+        <div class="gauge-value" id="gaugeValue">—</div>
+        <div class="model-meta" id="modelMeta"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Court Vision &middot; Projet réalisé pour l'AQX Sports Analytics Data Bowl 2.0 &middot; Données : <a href="https://github.com/NocturneBear/NBA-Data-2010-2024" target="_blank" rel="noopener">NocturneBear/NBA-Data-2010-2024</a> (MIT)</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
